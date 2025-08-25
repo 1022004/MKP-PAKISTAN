@@ -1,7 +1,204 @@
-# MKP (Markhor of Pakistan) Token Website
+[mkp_markhor_of_pakistan_one_page_token_site.html](https://github.com/user-attachments/files/21974735/mkp_markhor_of_pakistan_one_page_token_site.html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MKP — Markhor of Pakistan</title>
+  <meta name="description" content="MKP (Markhor of Pakistan) — community token celebrating Pakistan's spirit. Total supply: 200,000,000,000 MKP." />
+  <style>
+    :root {
+      --green: #01411C; /* Pakistan flag green */
+      --gold: #ffd166;
+      --card: rgba(0,0,0,.55);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
 
-A professional cryptocurrency project website with:
-- Animated background (Pakistan flag, BTC, ETH logos spinning)
-- About Us, Vision, and Future goals
-- Total Supply: 200 Billion MKP
-- Goal: Bright digital future for Pakistan
+    /* Reset */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; color: #fff; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: linear-gradient(90deg, var(--green) 70%, #ffffff 30%);
+      overflow-x: hidden;
+    }
+
+    /* Subtle flag crescent + star watermark */
+    .flag-watermark {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .14;
+      display: grid; place-items: center; filter: blur(.2px);
+    }
+    .flag-watermark svg { width: 48vmin; height: auto; }
+
+    header {
+      position: relative; z-index: 1; text-align: center; padding: 64px 16px 24px;
+    }
+    .brand {
+      display: inline-grid; place-items: center; gap: 12px;
+    }
+    .brand h1 { margin: 0; font-size: clamp(28px, 5vw, 48px); letter-spacing: .5px; color: var(--gold); }
+    .brand p  { margin: 0; opacity: .9; font-size: clamp(14px, 2.2vw, 18px); }
+
+    .cta {
+      display: inline-flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;
+    }
+    .btn {
+      background: var(--gold); color: #000; text-decoration: none; font-weight: 700; border-radius: 999px; padding: 12px 20px; box-shadow: var(--shadow);
+      transition: transform .15s ease, box-shadow .15s ease; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,.4); }
+
+    main { position: relative; z-index: 1; }
+    section { max-width: 1100px; margin: 24px auto; padding: 28px; background: var(--card); border-radius: 18px; box-shadow: var(--shadow);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    h2 { margin: 0 0 10px; color: var(--gold); font-size: clamp(20px, 3vw, 28px); }
+    p { line-height: 1.6; }
+
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .kpi { background: rgba(255,255,255,.06); padding: 18px; border-radius: 14px; }
+    .kpi b { color: var(--gold); }
+
+    footer { position: relative; z-index: 1; text-align: center; padding: 32px 16px; opacity: .95; }
+    footer a { color: var(--gold); text-decoration: none; font-weight: 600; }
+
+    /* Floating crypto glyphs */
+    .coin { position: fixed; z-index: 0; font-size: 42px; opacity: .55; filter: drop-shadow(0 6px 10px rgba(0,0,0,.35)); }
+    .btc { color: #f7931a; left: 6vw; animation: floatUp 13s linear infinite; }
+    .eth { color: #9fc8ff; left: 85vw; animation: floatUp 17s linear infinite; animation-delay: -5s; }
+    .eth2{ color: #c7dbff; left: 55vw; animation: floatUp 21s linear infinite; animation-delay: -10s; }
+    @keyframes floatUp {
+      from { transform: translateY(60vh) rotate(0turn); top: 40vh; }
+      to   { transform: translateY(-120vh) rotate(1turn); top: -80vh; }
+    }
+
+    /* 3D-ish spinning Markhor SVG logo */
+    .logo-wrap { width: 140px; height: 140px; margin: 0 auto 16px; perspective: 800px; }
+    .logo {
+      width: 100%; height: 100%; border-radius: 22px; display: grid; place-items: center; background: radial-gradient(120% 120% at 30% 20%, rgba(255,255,255,.12), rgba(0,0,0,.2) 50%, rgba(0,0,0,.5));
+      box-shadow: 0 12px 30px rgba(0,0,0,.45), inset 0 0 0 2px rgba(255,209,102,.25), 0 0 24px rgba(255,209,102,.35);
+      transform-style: preserve-3d; animation: spinY 9s linear infinite;
+    }
+    @keyframes spinY { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+    .logo svg { width: 78%; height: 78%; transform: translateZ(30px); }
+
+    /* Small utilities */
+    .muted { opacity: .8; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  </style>
+</head>
+<body>
+
+  <!-- Watermark of crescent & star -->
+  <div class="flag-watermark" aria-hidden="true">
+    <svg viewBox="0 0 200 200" fill="none" role="img">
+      <rect width="200" height="200" fill="transparent"/>
+      <!-- simple crescent -->
+      <circle cx="110" cy="100" r="60" fill="#ffffff"/>
+      <circle cx="130" cy="100" r="48" fill="url(#fade)"/>
+      <!-- star -->
+      <g transform="translate(140,80) rotate(20)">
+        <polygon points="0,-12 3,-3 12,-3 5,2 8,12 0,6 -8,12 -5,2 -12,-3 -3,-3" fill="#ffffff" />
+      </g>
+      <defs>
+        <linearGradient id="fade" x1="0" x2="1">
+          <stop offset="0%" stop-color="#01411C" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#01411C" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Floating crypto icons -->
+  <div class="coin btc">₿</div>
+  <div class="coin eth">Ξ</div>
+  <div class="coin eth2">Ξ</div>
+
+  <header>
+    <div class="brand">
+      <div class="logo-wrap">
+        <!-- Custom minimal Markhor SVG logo -->
+        <div class="logo" title="MKP — Markhor of Pakistan">
+          <svg viewBox="0 0 200 200" aria-label="Markhor logo" role="img">
+            <!-- horn rings / aura -->
+            <circle cx="100" cy="100" r="86" stroke="rgba(255,209,102,.28)" stroke-width="2" fill="none" />
+            <circle cx="100" cy="100" r="70" stroke="rgba(255,209,102,.18)" stroke-width="2" fill="none" />
+            <!-- stylized horns -->
+            <path d="M70 45 C75 38, 88 36, 95 46 C101 56, 98 72, 90 82 C82 92, 80 106, 86 118 C92 130, 92 146, 86 158"
+                  fill="none" stroke="#ffd166" stroke-width="6" stroke-linecap="round"/>
+            <path d="M130 45 C125 38, 112 36, 105 46 C99 56, 102 72, 110 82 C118 92, 120 106, 114 118 C108 130, 108 146, 114 158"
+                  fill="none" stroke="#ffd166" stroke-width="6" stroke-linecap="round"/>
+            <!-- head -->
+            <path d="M85 95 L115 95 L122 132 Q100 150 78 132 Z" fill="#ffd166" opacity=".95"/>
+            <!-- eyes -->
+            <circle cx="93" cy="110" r="2.6" fill="#1a1200"/>
+            <circle cx="107" cy="110" r="2.6" fill="#1a1200"/>
+            <!-- beard -->
+            <path d="M92 132 Q100 150 108 132" stroke="#1a1200" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <h1>MKP — Markhor of Pakistan</h1>
+      <p class="muted">The national spirit on-chain. Fast. Fair. Community-driven.</p>
+      <div class="cta">
+        <a class="btn" href="#buy">How to Buy</a>
+        <a class="btn" href="#tokenomics">Tokenomics</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About MKP</h2>
+      <p>
+        <b>MKP (Markhor of Pakistan)</b> is a community token celebrating Pakistan’s resilience and innovation. Our goal is to build utility that empowers holders while honoring the markhor’s strength.
+      </p>
+      <div class="grid">
+        <div class="kpi"><b>Chain:</b> <span class="mono">TBD (Solana or BNB)</span></div>
+        <div class="kpi"><b>Ticker:</b> <span class="mono">MKP</span></div>
+        <div class="kpi"><b>Supply:</b> <span class="mono">200,000,000,000</span></div>
+      </div>
+    </section>
+
+    <section id="tokenomics">
+      <h2>💰 Tokenomics</h2>
+      <div class="grid">
+        <div class="kpi"><b>Total Supply</b><br/>200,000,000,000 MKP</div>
+        <div class="kpi"><b>Community</b><br/>50%</div>
+        <div class="kpi"><b>Liquidity</b><br/>30%</div>
+        <div class="kpi"><b>Marketing</b><br/>10%</div>
+        <div class="kpi"><b>Team</b><br/>10%</div>
+      </div>
+      <p class="muted">Adjust these allocations to your final token plan before launch.</p>
+    </section>
+
+    <section id="roadmap">
+      <h2>🛣️ Roadmap</h2>
+      <div class="grid">
+        <div class="kpi"><b>Phase 1</b><br/>Token launch • Website • Socials</div>
+        <div class="kpi"><b>Phase 2</b><br/>DEX listing • Liquidity • Community growth</div>
+        <div class="kpi"><b>Phase 3</b><br/>Utilities • Partnerships • Audits</div>
+        <div class="kpi"><b>Phase 4</b><br/>CMC/CG applications • CEX listings</div>
+      </div>
+    </section>
+
+    <section id="buy">
+      <h2>How to Buy</h2>
+      <p>
+        1) Install a wallet (<b>Phantom</b> for Solana or <b>MetaMask</b> for BNB/ETH).<br/>
+        2) Fund with SOL/BNB/ETH. <br/>
+        3) Swap for <b>MKP</b> on your chain’s DEX.
+      </p>
+      <div class="cta">
+        <a class="btn" href="https://raydium.io/" target="_blank" rel="noopener">Raydium (Solana)</a>
+        <a class="btn" href="https://pancakeswap.finance/" target="_blank" rel="noopener">PancakeSwap (BNB)</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 MKP — Markhor of Pakistan • Built for the community</p>
+    <p><a href="https://t.me/yourtelegram" target="_blank" rel="noopener">Telegram</a> · <a href="https://twitter.com/yourtwitter" target="_blank" rel="noopener">Twitter</a></p>
+  </footer>
+</body>
+</html>
